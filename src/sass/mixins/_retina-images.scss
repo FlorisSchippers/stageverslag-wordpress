@@ -1,0 +1,78 @@
+//  ==============================
+//  Retina/ amoled screens
+//  ==============================
+
+//	Retina images old
+@mixin retina-image-easy($file, $type, $repeat, $width, $height) {
+	background-image: url("#{$file}.#{$type}");
+	background-repeat: $repeat;
+ 
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (min--moz-device-pixel-ratio: 2),
+		only screen and (-o-min-device-pixel-ratio: 2/1),
+		only screen and (min-device-pixel-ratio: 2),
+		only screen and (min-resolution: 192dpi),
+		only screen and (min-resolution: 2dppx) {
+			background-size: $width $height;
+			background-image: url("#{$file}2x.#{$type}");
+	}
+}
+
+//	Retina images new
+//	Documentation: http://cases.beta-preview.nl/sass-retina-mixin/
+$queries: (
+	"name": "tablet",
+	"query": "min-width: 768px",
+	"width": 734px,
+	"height": 365px
+),
+(
+	"name": "desktop",
+	"query": "min-width: 1024px",
+	"width": 935px,
+	"height": 365px
+);
+			
+@mixin retina-image($file, $type, $repeat, $width, $height, $multidevice: false, $queries: ()) { 
+	@if $multidevice {
+
+		// Loop through all of them queries
+		@each $query in $queries {
+			$mediaquery:	map-get($query, "query");
+			$queryname:		map-get($query, "name");
+			$width:			map-get($query, "width");
+			$height:		map-get($query, "height");
+
+			// non retina media query
+			@media only screen and (#{$mediaquery}){
+				background-image: url("#{$file}-#{$queryname }.#{$type}");
+				background-repeat: $repeat;
+			}
+
+			// retina media query depanding on screen width
+			@media only screen and (-webkit-min-device-pixel-ratio: 2) and (#{$mediaquery}) ,
+				only screen and (min--moz-device-pixel-ratio: 2) and (#{$mediaquery}),
+				only screen and (-o-min-device-pixel-ratio: 2/1) and (#{$mediaquery}),
+				only screen and (min-device-pixel-ratio: 2) and (#{$mediaquery}),
+				only screen and (min-resolution: 192dpi) and (#{$mediaquery}),
+				only screen and (min-resolution: 2dppx) and (#{$mediaquery}){
+					background-size: $width $height;
+					background-image: url("#{$file}-#{$queryname}2x.#{$type}");
+			}
+		}
+	}
+	@else {
+		background-image: url("#{$file}.#{$type}");
+		background-repeat: $repeat;
+
+		@media only screen and (-webkit-min-device-pixel-ratio: 2),
+			only screen and (min--moz-device-pixel-ratio: 2),
+			only screen and (-o-min-device-pixel-ratio: 2/1),
+			only screen and (min-device-pixel-ratio: 2),
+			only screen and (min-resolution: 192dpi),
+			only screen and (min-resolution: 2dppx) {
+				background-size: $width $height;
+				background-image: url("#{$file}2x.#{$type}");
+		}
+	}	
+}

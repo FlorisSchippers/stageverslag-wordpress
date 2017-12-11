@@ -1,0 +1,112 @@
+//	============================================
+//	Project - variables
+//	============================================
+
+//	General project settings
+$clientName:		'stageverslag';
+$type:				wordpress; // Options: drupal / magento / facebook / publer
+$imgURL:			'';
+$fontURL:			'';
+
+//	Website paths (optional)
+@if $type == drupal {
+	$fontURL:			'/sites/all/themes/#{$clientName}/fonts/';
+	$imgURL:			'/sites/all/themes/#{$clientName}/images/';
+}
+@else if $type == magento {
+	$fontURL:			'../fonts/';
+	$imgURL:			'../images/';
+}
+@else if $type == wordpress {
+    $themepath:			'/assets/themes/#{$clientName}';
+	$fontURL:			'#{themepath}/fonts/';
+	$imgURL:			'#{themepath}/images/';
+}
+@else {
+	$themepath:			'/';
+	$fontURL:			'#{$themepath}/fonts/';
+	$imgURL:			'#{$themepath}/images/';
+}
+
+$bgURL:				'#{$imgURL}backgrounds/';
+
+//	============================================
+//	layout
+//	============================================
+$siteWidth:			960px;
+$gutter:			10px;
+$menuWidth:			70%;
+$primary:			left;
+$secondary:			right;
+
+
+//	============================================
+//	Colors
+//	============================================
+
+// Layout colors
+
+
+
+*:focus {
+    outline: none;
+}
+
+//	============================================
+//	Project - helpers
+//	============================================
+
+//	Alignment
+.alignleft {
+    text-align: left;
+}
+.aligncenter {
+    text-align: center;
+}
+.alignright {
+    text-align: right;
+}
+
+//	Images
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+//	Mobile
+.only-mobile {
+	display: block;
+	@include breakpoint(tablet){ display: none !important; }
+}
+
+//	Tablet
+.only-tablet {
+	display: none;
+	@include breakpoint(tablet){ display: block; }
+	@include breakpoint(desktop){ display: none; }
+}
+//	From tablet up
+.from-tablet {
+	display: none;
+	@include breakpoint(tablet){ display: block; }
+}
+
+//	Desktop
+.only-desktop {
+	display: none;
+	@include breakpoint(desktop){ display: block; }
+}
+
+svg{
+	pointer-events: none;
+}
+
+
+//	============================================
+//	Effects & Animations
+//	============================================
+
+
+//	============================================
+//	Project - Fonts
+//	============================================

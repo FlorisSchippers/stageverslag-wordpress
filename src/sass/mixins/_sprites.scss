@@ -1,0 +1,47 @@
+//	Experiment om sprites niet meer te uit te schrijven in je sass files
+//	Documentation: http://cases.beta-preview.nl/sass-sprite-mixin/
+@mixin icon-sprite ($file, $type, $repeat, $width, $height, $selector, $items, $gridsize) {
+    
+    //  Class is scope (example: .icon.arrow-left)
+    .#{$selector} {
+        //  ===================
+        //  Retina image
+        //  ===================
+        @include retina-image($file, $type, $repeat, #{$width}px, #{$height}px);
+        
+        //  ===================
+        //  Start making sprite
+        //  ===================
+
+        //  icons in list * iconSquare (quare dimensions) * 2 (hovers)
+        $starty: $width;
+
+        //  startpoint of X
+        $x: 0;
+
+        //  Hover start (half way in the sprite)
+        $hx: -($starty / 2);
+
+        //  startpoint of Y
+        $y: (-$starty + $gridsize);
+
+        //  Hover start
+        $hy: $hx + $gridsize;
+
+        @each $item in $items {
+
+            &.#{$item} {
+                background-position: #{$x}px #{$y}px;
+                
+                &:hover { background-position: #{$xh}px #{$yh}px; }
+            }
+
+            $x: $x - $gridsize;
+            $y: $y + $gridsize;
+
+            //  Hovers
+            $hx: $hx - $gridsize;
+            $hy: $hy + $gridsize;
+        }
+    }
+}

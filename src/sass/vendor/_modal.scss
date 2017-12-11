@@ -1,0 +1,57 @@
+// General - modal */
+#modal-overlay, .static-overlay {
+    background-color: rgba(0,0,0,0.6);
+    height: 100%;
+    left: 0;
+    opacity: 0.80; 
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1100; 
+}
+#modal-wrapper, .static-wrapper {
+	background: #333;
+    left: 50%;
+	margin-left: -145px;
+    position: absolute;
+	top: 30px !important;
+	width: 300px !important;
+    z-index: 1101;
+	
+	@include breakpoint(tablet){ 
+		margin-left: -215px !important;
+		padding: 30px 51px;
+		width: 430px !important;
+		top: 133px !important;
+	}
+	
+	.modal-close{
+		display: block;
+		height: 17px;
+		color: #000;
+		font-size: 13px;
+		margin: 0;
+		position: absolute;
+		right: 10px;
+		text-indent: -9999px;
+		top: 10px;
+		width: 17px;
+		z-index: 2225;
+	}
+}
+#modal-content{  
+	height: 100%; 
+	text-align: center;
+	width: 100%;
+}
+
+//	Different overlay
+.overlay {
+	background: rgba(0,0,0,0.2);
+	height: 100%;
+	left:0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 900;
+}

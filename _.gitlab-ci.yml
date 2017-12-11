@@ -1,0 +1,82 @@
+stages:
+  - build
+  - deploy
+
+before_script:
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - mkdir -p ~/.ssh
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+webpack:
+  stage: build
+  image: burst/platformsh-php
+  variables:
+    APP_ROOT: $CI_PROJECT_DIR
+  artifacts:
+    paths:
+      - webroot/assets/themes/stibat
+    expire_in: 3 hours
+  cache:
+    key: "ALL"
+    paths:
+      - build/.node-cache
+  script:
+    - /bin/bash ./bin/build/webpack.sh
+
+wordpress:
+  stage: build
+  image: burst/platformsh-php
+  variables:
+    APP_ROOT: $CI_PROJECT_DIR
+    WEBROOT: $CI_PROJECT_DIR/webroot
+    ACF_PRO_KEY: b3JkZXJfaWQ9ODY0Mzh8dHlwZT1kZXZlbG9wZXJ8ZGF0ZT0yMDE2LTA3LTI3IDA4OjIzOjE1
+  artifacts:
+    paths:
+      - vendor
+      - webroot
+    expire_in: 3 hours
+  cache:
+    key: "ALL"
+    paths:
+      - .composer-cache
+  script:
+    #- rm -rf /app
+    #- ln -s $CI_PROJECT_DIR /app
+    - /bin/bash ./bin/build/wordpress.sh
+
+acc:
+  stage: deploy
+  image: macropin/sshd
+  dependencies:
+    - webpack
+    - wordpress
+  environment:
+    name: acc
+  #when: manual
+  variables:
+    USER: burst
+    HOST: dev-web1.burstnet.nl
+    PROJECT_PATH: '' #TODO : Setup path
+    ENV: acc
+    APP_ROOT: $CI_PROJECT_DIR
+  script:
+    - /bin/bash ./bin/deploy/rsync.sh
+
+prod:
+  stage: deploy
+  image: macropin/sshd
+  dependencies:
+    - webpack
+    - wordpress
+  environment:
+    name: prod
+  when: manual
+  variables:
+    USER: burst
+    HOST: wordpress-web1.burstnet.nl
+    PROJECT_PATH: '' #TODO : Setup path
+    ENV: prod
+    APP_ROOT: $CI_PROJECT_DIR
+  script:
+    - /bin/bash ./bin/deploy/rsync.sh

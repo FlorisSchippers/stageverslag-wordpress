@@ -1,0 +1,29 @@
+.button {
+    background-color: rgba(0,0,0,0.75);
+	border: 2px solid #000;		//	<button>
+    color: #fff;
+	cursor: pointer;			//	<button>
+	display: inline-block;		//	<a>
+    outline: none;				//	<button>
+	padding: 0;					//	<button> (FireFox)
+    position: relative;
+	text-decoration: none;		//	<a>
+    transition: all 0.35s ease-out;
+
+    &:after {
+        background-color: rgba(0,0,0,1);
+        bottom: 0;
+        content: '';
+        height: 0%;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    // default hover
+    &:hover {
+        &:after {
+            height: 100%;
+        }
+    }
+}

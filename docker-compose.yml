@@ -1,0 +1,84 @@
+version: "2"
+
+services:
+
+  # Shared volume container for application data
+  app_data:
+    image: tianon/true
+    volumes:
+      - ./:/app
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+      - ~/.ssh/known_hosts:/root/.ssh/known_hosts
+
+  # Shared volume container for database data
+  db_data:
+    image: tianon/true
+    volumes:
+      - /var/lib/mysql
+
+  # Web server
+  nginx:
+    image: nginx:1.11
+    links:
+      - php
+      - db
+    ports:
+      - 80:80
+    volumes_from:
+      - app_data
+    volumes:
+      - ./docker/nginx/conf/wordpress.conf:/etc/nginx/conf.d/wordpress.conf
+      - ./.logs/nginx:/var/logs/nginx
+
+  # PHP FPM
+  php:
+    image: burst/platformsh-php:latest
+    links:
+      - db
+    #   - redis
+    volumes_from:
+      - app_data
+    environment:
+      APP_ROOT: /app
+      WEBROOT: /app/webroot
+      ENV: dev
+      FRAMEWORK: wordpress
+      DB_HOST: herosurvey_db_1
+      DB_NAME: herosurvey
+      DB_USER: herosurvey
+      DB_PASS: herosurvey
+      DB_PASSWORD: herosurvey
+      DB_PREFIX: herosurvey_
+
+      # Remote Prod settings for db syncing
+      REMOTE_SSH_USER: burst
+      REMOTE_SSH_HOST: dev-web1.burstnet.nl
+      REMOTE_PROJECT_PATH: /var/www/vhosts/hero/hero-survey/
+
+      USER: burst
+      HOST: dev-web1.burstnet.nl
+      PROJECT_PATH: /var/www/vhosts/hero/hero-survey/
+      ENV: test
+
+  # Database
+  db:
+    image: percona:5.7
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    volumes_from:
+      - db_data
+    environment:
+      MYSQL_ROOT_PASSWORD: herosurvey
+      MYSQL_DATABASE: herosurvey
+      MYSQL_USER: herosurvey
+      MYSQL_PASSWORD: herosurvey
+
+  # Redis cache
+  # redis:
+    # image: redis:3.2.5
+
+  #solr:
+
+  #varnish:

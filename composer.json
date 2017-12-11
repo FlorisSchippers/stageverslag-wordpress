@@ -1,0 +1,68 @@
+{
+    "name": "burst/wordpress-stack",
+    "description": "Burst Wordpress Stack",
+    "repositories": [
+        {
+          "type": "composer",
+          "url": "https://wpackagist.org"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "advanced-custom-fields/advanced-custom-fields-pro",
+                "version": "5.5.5",
+                "type": "wordpress-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download"
+                },
+                "require": {
+                    "philippbaschke/acf-pro-installer": "^1.0",
+                    "composer/installers": "^1.0"
+                }
+            }
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0.6",
+        "vlucas/phpdotenv": "^2.0.1",
+        "oscarotero/env": "^1.0",
+        "gwa/multisite-directory-resolver": "~2.2.0",
+        "johnpbloch/wordpress-core-installer": "~0.1",
+        "johnpbloch/wordpress-core": "4.8.*",
+        "fancyguy/wordpress-monolog": "dev-master",
+        "wpackagist-plugin/acf-multisite-sync": "*",
+        "wpackagist-plugin/akismet": "*",
+        "wpackagist-plugin/amp": "*",
+        "wpackagist-plugin/bwp-minify": "*",
+        "wpackagist-plugin/duracelltomi-google-tag-manager": "*",
+        "wpackagist-plugin/ewww-image-optimizer": "*",
+        "wpackagist-plugin/fakerpress": "*",
+        "wpackagist-plugin/go-live-update-urls": "*",
+        "wpackagist-plugin/crop-thumbnails": "*",
+        "wpackagist-plugin/multisite-language-switcher": "*",
+        "wpackagist-plugin/ninja-forms": "*",
+        "wpackagist-plugin/post-types-order": "*",
+        "wpackagist-plugin/redirection": "*",
+        "wpackagist-plugin/regenerate-thumbnails": "*",
+        "wpackagist-plugin/taxonomy-terms-order": "*",
+        "wpackagist-plugin/theme-check": "*",
+        "wpackagist-plugin/w3-total-cache": "*",
+        "wpackagist-plugin/wordpress-seo": "*",
+        "wpackagist-plugin/aryo-activity-log": "*",
+        "wp-sync-db/wp-sync-db": "dev-master",
+        "wp-sync-db/wp-sync-db-cli": "dev-master",
+        "advanced-custom-fields/advanced-custom-fields-pro": "*",
+        "wpackagist-plugin/acf-to-rest-api": "^2.2",
+        "wpackagist-plugin/application-passwords": "dev-trunk"
+    },
+    "extra": {
+        "wordpress-install-dir": "webroot/wp",
+        "installer-paths": {
+            "webroot/assets/plugins/{$name}/": ["type:wordpress-plugin"],
+            "webroot/assets/themes/{$name}/": ["type:wordpress-theme"]
+        }
+    }
+}

@@ -1,0 +1,40 @@
+//	Local for better caching
+@import 'vendor/_stdcss.0.0.7';
+
+//	Mixins
+@import 'mixins/_breakpoints';			//	Breakpoints
+@import 'mixins/_mobile-menu';			//	Breakpoints
+@import 'mixins/_placeholders';			//	Clearfix / Cleanlist
+@import 'mixins/_sprites';				//	Sprites
+@import 'mixins/_text';					//	Hyphenation / Placeholder / Font size (REM support)
+
+//	Project settings
+@import '_vars';
+
+//	CSS or Sass from other projects
+//@import 'vendor/_select2';
+//@import 'vendor/_magnificpopup';
+//@import 'vendor/_flexslider';
+//@import 'vendor/_mediaelement';
+
+//	Inproject default markup
+//@import 'partials/_animations';
+@import 'partials/_buttons';
+//@import 'partials/_icons';
+@import 'partials/_forms';
+@import 'partials/_table';
+@import 'partials/_typography';
+
+//	Components
+@import 'components/_structure';
+@import 'components/_header';
+@import 'components/_footer';
+@import 'components/_navigation';
+
+
+//	Pages
+
+
+
+// KEEP CALM AND SAVE THE TREES http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-save-the-trees.png
+@import 'partials/_print';

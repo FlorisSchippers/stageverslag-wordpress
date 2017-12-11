@@ -1,0 +1,38 @@
+//	Slide direction for column
+@mixin item-slide-direction($position: $primary, $menuWidth: 70%) {
+
+	@if ($position == left) {
+		left: $menuWidth;
+	}
+	@else if ($position == right) {
+		left: -$menuWidth;
+	}
+
+	@include breakpoint(desktop){
+		left: 0;
+		transition: none;
+	}
+}
+
+//	Column position
+@mixin column-position(
+	$menuWidth: 70%,
+	$position: $primary
+) {
+    width: $menuWidth;
+
+	@if ($position == left) {
+		margin-left: -($menuWidth + 100);
+
+	}
+	@else if ($position == right) {
+		margin-right: -$menuWidth;
+
+	}
+
+	@include breakpoint(desktop){
+		width: 100%;
+
+		box-shadow: none;
+	}
+}

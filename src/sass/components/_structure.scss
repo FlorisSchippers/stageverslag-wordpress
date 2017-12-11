@@ -1,0 +1,200 @@
+body {
+    background: #f2f2f2;
+    color: #000;
+}
+
+//	============================================
+//	Wrappers
+//	============================================
+#outer-wrap {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+
+	#inner-wrap { position: relative; width: 100%; }
+}
+
+//	============================================
+//	class to target items to slide
+//	when menu toggled, elements should not
+//	be position: static
+//	============================================
+
+.item-slide {
+
+	left: 0;
+	transition: left 0.3s ease;
+
+	.navopenleft & {
+		@include item-slide-direction($primary);
+	}
+
+	.navopenright & {
+		@include item-slide-direction($secondary);
+	}
+}
+
+//	Menu button
+.nav-trigger,
+.nav-trigger:focus {
+	height: 58px;
+	left: 0;
+	overflow: hidden;	//	Android
+	position: absolute;
+	top: 0;
+	width: 58px;
+
+	@include breakpoint(desktop){
+		display: none;
+	}
+
+	&.right {
+		float: none;
+		left: auto;
+		right: 0;
+	}
+
+	span {
+		width: 28px;
+		height: 2px;
+		background: #6B5755;
+		text-indent: -99999px;
+		position: absolute;
+		top: 28px;
+		right: 20px;
+		transition: opacity 300ms ease;
+
+		.navopenright & {
+			opacity: 0;
+		}
+	}
+	&:after,
+	&:before {
+		content: "";
+		width: 28px;
+		height: 2px;
+		background: #6B5755;
+		position: absolute;
+		right: 20px;
+		transition: transform ease 400ms, background ease 600ms;
+	}
+	&:after {
+		top: 35px;
+
+		.navopenright & {
+			transform: rotate(45deg) translateY(-10px);
+			background: #fff;
+		}
+	}
+	&:before {
+		top: 21px;
+
+		.navopenright & {
+			transform: rotate(-45deg) translateY(10px);
+			background: #fff;
+		}
+	}
+
+}
+
+//	============================================
+//	Elements
+//	============================================
+.container {
+	margin: 0 5px;
+	max-width: $siteWidth;
+	position: relative;
+
+	@include breakpoint(desktop) {
+		margin: 0 auto;
+	}
+
+	//	Exceptions
+	#header & {
+		height: 40px;
+		padding-top: 3px;
+		position: relative;
+
+		@include breakpoint(desktop) {
+			height: 66px; padding-top: 10px;
+		}
+
+	}
+
+	#primary-column & {
+		@include breakpoint(maxMobileLandscape) {
+			margin: 0;
+		}
+	}
+}
+
+.main-wrapper {
+	float: left;
+	width: 100%;
+	min-height: 100vh;
+
+	@include breakpoint(desktop) {
+		float: none;
+	}
+
+/*	#content {
+		margin: 40px 0 0 0; padding: 25px 0 0 0;
+	}*/
+}
+#main {
+	//min-height: calc(100vh - 190px);
+	min-height: 100vh;
+	overflow: hidden;
+
+	@include breakpoint(desktop){
+		min-height: calc(100vh - 84px);
+	}
+}
+
+.content article:first-child {
+	@include breakpoint(desktop){
+		min-height: calc(100vh - 84px);
+	}
+}
+
+#main-footer {
+	float: left;
+	width: 100%;
+}
+
+//	============================================
+//	Secondary column
+//	============================================
+#secondary-column {
+	float: left;
+	overflow: hidden;
+
+	//	Experimenteel (hoogte van menu gelijk aan content)
+	margin-bottom: -10000px;
+	padding-bottom: 10000px;
+
+
+
+	@include column-position($position: $secondary);
+
+	@include breakpoint(desktop) {
+		background: none;
+		float: none;
+		height: auto;
+		margin-left: 0;
+		overflow: visible;
+
+		//	Experimenteel (hoogte van menu gelijk aan content) Reset
+		margin-bottom: 0;
+		padding-bottom: 0;
+
+		right: 147px;
+		position: fixed;
+		top: 0;
+		width: auto;
+		margin-right: 0;
+		z-index: 15;
+	}
+
+
+}

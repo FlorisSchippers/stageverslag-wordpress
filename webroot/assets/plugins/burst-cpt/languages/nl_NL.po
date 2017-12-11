@@ -1,0 +1,72 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Burst Custom Post Types v0.0.1\n"
+"POT-Creation-Date: 2016-01-11 21:02+0100\n"
+"PO-Revision-Date: 2016-01-11 21:02+0100\n"
+"Last-Translator: Matthijs <matthijs@burst-digital.com>\n"
+"Language-Team: Burst <developers@burst-digital.com>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: burst-cpt.php:25
+msgid "sponsoren"
+msgstr ""
+
+#: burst-cpt.php:26 burst-cpt.php:30
+msgid "Sponsoren"
+msgstr ""
+
+#: burst-cpt.php:31
+msgid "Parent Sponsor"
+msgstr ""
+
+#: burst-cpt.php:32
+msgid "Alle Sponsoren"
+msgstr ""
+
+#: burst-cpt.php:33
+msgid "Toon Sponsoren"
+msgstr ""
+
+#: burst-cpt.php:34
+msgid "Sponsor toevoegen"
+msgstr ""
+
+#: burst-cpt.php:35
+msgid "Toevoegen"
+msgstr ""
+
+#: burst-cpt.php:36
+msgid "Sponsor aanpassen"
+msgstr ""
+
+#: burst-cpt.php:37
+msgid "Update Sponsor"
+msgstr ""
+
+#: burst-cpt.php:38
+msgid "Sponsor zoeken"
+msgstr ""
+
+#: burst-cpt.php:39
+msgid "Niet gevonden"
+msgstr ""
+
+#: burst-cpt.php:40
+msgid "Niet gevonden in prullenbak"
+msgstr ""
+
+#: cpt-permalinks.php:18
+msgid "CPT Base Nieuws"
+msgstr ""
+
+#: cpt-permalinks.php:22
+msgid "CPT Base  Twee"
+msgstr ""
