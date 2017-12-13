@@ -10,6 +10,9 @@ require_once(dirname(__DIR__) . '/vendor/autoload.php');
 /** Location of your WordPress configuration. */
 require_once(dirname(__DIR__) . '/config/wp-config.php');
 
+/** Define location of images folder. */
+define( 'UPLOADS', 'wp-content/uploads' );
+
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . '/wp-settings.php');
 

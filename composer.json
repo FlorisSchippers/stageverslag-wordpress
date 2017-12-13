@@ -53,6 +53,7 @@
         "wpackagist-plugin/wordpress-seo": "*",
         "wpackagist-plugin/aryo-activity-log": "*",
         "wpackagist-plugin/simple-page-ordering": "*",
+        "wpackagist-plugin/better-rest-api-featured-images": "*",
         "wp-sync-db/wp-sync-db": "dev-master",
         "wp-sync-db/wp-sync-db-cli": "dev-master",
         "advanced-custom-fields/advanced-custom-fields-pro": "*",
