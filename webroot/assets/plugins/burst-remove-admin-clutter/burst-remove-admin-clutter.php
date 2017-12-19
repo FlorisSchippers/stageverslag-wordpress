@@ -17,9 +17,9 @@ add_action( 'admin_menu', 'custom_menu_page_removing' );
  */
 function custom_menu_page_removing() {
 
-	remove_menu_page( 'edit.php' );                   //Posts
-	remove_menu_page( 'post-new.php' );               //Posts
-	remove_menu_page( 'edit-comments.php' );          //Comments
-	remove_menu_page( 'upload.php' );                 //Media
-	remove_menu_page( 'edit.php?post_type=page' );    //Pages
+//	remove_menu_page( 'edit.php' );                   //Posts
+//	remove_menu_page( 'post-new.php' );               //Posts
+//	remove_menu_page( 'edit-comments.php' );          //Comments
+//	remove_menu_page( 'upload.php' );                 //Media
+//	remove_menu_page( 'edit.php?post_type=page' );    //Pages
 }
