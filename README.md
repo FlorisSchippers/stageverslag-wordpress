@@ -1,7 +1,7 @@
 # stageverslag-wordpress #
 ## What is this repository? ##
 
-Wordpress API voor mijn stageverslag
+Wordpress-powered API for the stageverslag-react repository
 
 
 ## Tools & Technologies ##
@@ -12,9 +12,9 @@ Wordpress API voor mijn stageverslag
 **Back-end tools**
 * Composer (package manager)
 
-**Front-end tools**
-* Webpack (build tool for front-end packages, scripts and stylesheets)
-* Sass (CSS Pre-processor)
+~~**Front-end tools**~~
+~~* Webpack (build tool for front-end packages, scripts and stylesheets)~~
+~~* Sass (CSS Pre-processor)~~
 
 ## Wordpress ##
 WordPress is a cms system we use to build easy to maintain sites. 
@@ -23,7 +23,6 @@ The admin url is no longer `/wp-admin/` but `/wp/wp-admin/` since WordPress is i
 
 ### Composer ###
 Composer is the package manager used to manage **WordPress plugins**, **WordPress** itself and **third party libraries**.
-
 
 ### Installing Plugins ###
 Plugins can be added by modifying the composer.json file. Simply add `"wpackagist-plugin/[PLUGIN NAME]": "*"` and 
