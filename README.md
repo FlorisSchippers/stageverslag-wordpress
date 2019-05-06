@@ -12,8 +12,8 @@ Wordpress-powered API for the stageverslag-react repository
 **Back-end tools**
 * Composer (package manager)
 
-~~**Front-end tools**~~
-~~* Webpack (build tool for front-end packages, scripts and stylesheets)~~
+~~**Front-end tools**~~  
+~~* Webpack (build tool for front-end packages, scripts and stylesheets)~~  
 ~~* Sass (CSS Pre-processor)~~
 
 ## Wordpress ##
